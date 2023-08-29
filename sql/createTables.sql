@@ -1,8 +1,8 @@
-DROP TABLE IF EXISTS food;
+drop table if exists pastes;
 
-CREATE TABLE  food (
-    id          serial PRIMARY KEY,
-    title       varchar(40) NOT NULL
+create table pastes 
+(id serial primary key,
+ title varchar(55),
+ description text not null,
+ creation_date date
 );
-
-INSERT INTO food (title) VALUES ('sourdough'), ('olive oil'), ('pizza'), ('picanha'), ('gorgonzola'), ('basil');
