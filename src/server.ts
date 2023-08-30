@@ -17,7 +17,7 @@ app.use(express.json()); //add JSON body parser to each following route handler
 app.use(cors()); //add CORS support to each following route handler
 
 app.get("/", async (_req, res) => {
-    res.json({ msg: "Hello! There's nothing interesting for GET /" });
+    res.json({ msg: "There's nothing interesting for GET /" });
 });
 
 app.get("/pastes", async (_req, res) => {
