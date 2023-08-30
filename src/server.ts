@@ -20,11 +20,12 @@ app.get("/", async (_req, res) => {
     res.json({ msg: "Hello! There's nothing interesting for GET /" });
 });
 
-app.get("/health-check", async (_req, res) => {
+app.get("/pastes", async (_req, res) => {
     try {
         //For this to be successful, must connect to db
-        await client.query("select now()");
-        res.status(200).send("system ok");
+        const text = "select * from pastes";
+        const response = await client.query(text);
+        res.status(200).json(response.rows);
     } catch (error) {
         //Recover from error rather than letting system halt
         console.error(error);
