@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "5bf0a7cf-37c3-4e34-8bc2-180994533a37",
+		"name": "pastebin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29414702"
+	},
+	"item": [
+		{
+			"name": "https://paste-bin-backend.onrender.com/pastes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://paste-bin-backend.onrender.com/pastes",
+					"protocol": "https",
+					"host": [
+						"paste-bin-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"pastes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/pastes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/pastes/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"pastes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/pastes/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/pastes/recent/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"pastes",
+						"recent",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/pastes/recent/10",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/pastes/recent/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"pastes",
+						"recent",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/pastes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"error code\",\n\"description\": \"console.error(error) res.status(500).send('An error occurred. Check server logs')\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/pastes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"pastes"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
