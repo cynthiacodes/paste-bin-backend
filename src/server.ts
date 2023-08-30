@@ -17,7 +17,7 @@ app.use(express.json()); //add JSON body parser to each following route handler
 app.use(cors()); //add CORS support to each following route handler
 
 app.get("/", async (_req, res) => {
-    res.json({ msg: "Hello! There's nothing interesting for GET /" });
+    res.json({ msg: "There's nothing interesting for GET /" });
 });
 
 app.get("/pastes", async (_req, res) => {
@@ -28,6 +28,47 @@ app.get("/pastes", async (_req, res) => {
         res.status(200).json(response.rows);
     } catch (error) {
         //Recover from error rather than letting system halt
+        console.error(error);
+        res.status(500).send("An error occurred. Check server logs.");
+    }
+});
+
+app.get("/pastes/:id", async (req, res) => {
+    try {
+        const id = req.params.id;
+        const text = "select * from pastes where id = $1";
+        const values = [id];
+        const response = await client.query(text, values);
+        res.status(200).json(response.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred. Check server logs.");
+    }
+});
+
+app.get("/pastes/recent/:amount", async (req, res) => {
+    try {
+        const amount = req.params.amount;
+        const text =
+            "select * from pastes order by creation_date desc limit $1";
+        const values = [amount];
+        const response = await client.query(text, values);
+        res.status(200).json(response.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred. Check server logs.");
+    }
+});
+
+app.post("/pastes", async (req, res) => {
+    try {
+        const { title, description } = req.body;
+        const text =
+            "insert into pastes (title, description) values ($1, $2) returning *";
+        const values = [title, description];
+        const newPastes = await client.query(text, values);
+        res.status(201).json(newPastes.rows);
+    } catch (error) {
         console.error(error);
         res.status(500).send("An error occurred. Check server logs.");
     }
