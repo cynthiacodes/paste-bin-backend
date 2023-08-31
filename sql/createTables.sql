@@ -2,7 +2,7 @@ drop table if exists pastes;
 
 create table pastes 
 (id serial primary key,
- title varchar(55),
+ title varchar(55) default null,
  description text not null,
  creation_date timestamp default current_timestamp
 );
