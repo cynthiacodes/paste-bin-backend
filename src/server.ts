@@ -5,16 +5,15 @@ import { Client } from "pg";
 import { getEnvVarOrFail } from "./support/envVarUtils";
 import { setupDBClientConfig } from "./support/setupDBClientConfig";
 
-dotenv.config(); //Read .env file lines as though they were env vars.
+dotenv.config();
 
 const dbClientConfig = setupDBClientConfig();
 const client = new Client(dbClientConfig);
 
-//Configure express routes
 const app = express();
 
-app.use(express.json()); //add JSON body parser to each following route handler
-app.use(cors()); //add CORS support to each following route handler
+app.use(express.json());
+app.use(cors());
 
 app.get("/", async (_req, res) => {
     res.json({ msg: "There's nothing interesting for GET /" });
@@ -22,12 +21,10 @@ app.get("/", async (_req, res) => {
 
 app.get("/pastes", async (_req, res) => {
     try {
-        //For this to be successful, must connect to db
         const text = "select * from pastes";
         const response = await client.query(text);
         res.status(200).json(response.rows);
     } catch (error) {
-        //Recover from error rather than letting system halt
         console.error(error);
         res.status(500).send("An error occurred. Check server logs.");
     }
