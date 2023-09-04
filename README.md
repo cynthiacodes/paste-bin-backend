@@ -1,10 +1,6 @@
-# mark-fullstack-proj--starter-1
+# Paste Bin Backend Server
 
-## Usage:
-
-Instead of cloning this project, click "Use this template". This will allow you to create a repo on github which has this project's content but which is not a fork of it.
-
-Make sure you create the repo as being owned by your own account not by the WeAreAcademy organisation.
+This is a backend server for the Paste Bin [frontend app](https://github.com/cynthiacodes/paste-bin-react-app).
 
 ## Install
 
@@ -23,6 +19,8 @@ PORT=4000
 ```
 
 You will need to create your own databases for this project - certainly one remotely and ideally one locally, too, for development and testing.
+
+You can use the SQL scripts in `createTables.sql` file to setup database locally or remotely.
 
 Hosts for postgres with a free offering include:
 
